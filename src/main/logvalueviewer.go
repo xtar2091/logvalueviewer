@@ -1,7 +1,14 @@
 package main
 
-import "fmt"
-
 func main() {
-	fmt.Print("aaa")
+	ok := cmd.Init()
+	if ok == false {
+		return
+	}
+	producer.Init()
+
+	go producer.Start()
+	go consumer.Start()
+
+	task.Wait()
 }
